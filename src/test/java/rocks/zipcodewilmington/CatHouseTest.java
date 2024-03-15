@@ -2,6 +2,7 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 
@@ -21,6 +22,7 @@ public class CatHouseTest {
         int actualHowManyCatWeHave = cathouse.getNumberOfCats();
 
         Assert.assertEquals(expectedHowManyCatWeHave + 1, actualHowManyCatWeHave);
+        cathouse.clear();
 
     }
 
@@ -39,6 +41,7 @@ public class CatHouseTest {
         int actualHowManyCatsWeHave = cathouse.getNumberOfCats();
 
         Assert.assertEquals(expectedHowManyCatsWeHave - 1, actualHowManyCatsWeHave);
+        cathouse.clear();
     }
     // TODO - Create tests for `void remove(Cat cat)`
     @Test
@@ -53,8 +56,34 @@ public class CatHouseTest {
         int actualHowMany = cathouse.getNumberOfCats();
 
         Assert.assertEquals(howMany - 1 ,actualHowMany);
+        cathouse.clear();
     }
 
     // TODO - Create tests for `Cat getCatById(Integer id)`
+
+    @Test
+    public void testGetCatById() {
+        CatHouse cathouse = new CatHouse();
+        Integer id = 7890;
+        Cat cat = new Cat(null, null, id);
+
+        cathouse.add(cat);
+
+        Assert.assertEquals(cat, cathouse.getCatById(id));
+        cathouse.clear();
+    }
+
     // TODO - Create tests for `Integer getNumberOfCats()`
+    @Test
+    public void testGetNumberOfCats() {
+        CatHouse cathouse = new CatHouse();
+        Cat cat = new Cat(null, null, null);
+        int expectedNumberOfCats = CatHouse.getNumberOfCats();
+
+        cathouse.add(cat);
+
+        int actualNumberOfCats = CatHouse.getNumberOfCats();
+        Assert.assertEquals(expectedNumberOfCats +1 , actualNumberOfCats);
+        cathouse.clear();
+    }
 }
