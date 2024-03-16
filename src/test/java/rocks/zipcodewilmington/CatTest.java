@@ -6,6 +6,7 @@ import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.Mammal;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -44,7 +45,7 @@ public class CatTest {
     public void testSetBirthDate() {
         // Given
         Cat cat = new Cat(null, null, null);
-        Date expected = new Date(2011, 06, 27);
+        Date expected = new Date(2011, Calendar.JUNE, 27);
 
         // When
         cat.setBirthDate(expected);
